@@ -18,9 +18,9 @@ int main() { 	// CGS UNITS
 
 	std::shared_ptr<DM_Spectrum> spectrum;
 	{
-		Channel channel = Channel::mu;
-		double MC2_DM = 100 * cgs::GeV;
-		spectrum = std::make_shared<DM_Spectrum>(channel, (int) (MC2_DM / cgs::GeV));
+		dmChannel channel = dmChannel::mu;
+		dmMass mass = dmMass::m100GeV;
+		spectrum = std::make_shared<DM_Spectrum>(channel, mass);
 	}
 
 	double emissivity = 0;
@@ -29,7 +29,7 @@ int main() { 	// CGS UNITS
 		double E_gamma = 10. * cgs::GeV;
 		double position = 8.1 * cgs::kpc;
 
-		emissivity = 0.5 * sigma_v * std::pow(cgs::c_light, 4) / std::pow(spectrum->mass(), 2.);
+		emissivity = 0.5 * sigma_v * std::pow(cgs::c_light, 4) / std::pow(spectrum->mass_c2(), 2.);
 		emissivity *= spectrum->get(E_gamma);
 		emissivity *= std::pow(nfw->get(position), 2.);
 	}

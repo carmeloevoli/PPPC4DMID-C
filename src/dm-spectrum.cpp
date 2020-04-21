@@ -22,7 +22,7 @@ void DM_Spectrum::load_table(size_t icol) {
 				file_to_read >> mDM >> log10x;
 				for (size_t k = 0; k < 28; k++)
 					file_to_read >> spec[k];
-				if (mDM == m_mass)
+				if (mDM == (int)m_mass)
 					spectrum.push_back(std::pair<double, double>(log10x, spec[icol]));
 			}
 		}
@@ -35,6 +35,7 @@ void DM_Spectrum::load_table(size_t icol) {
 
 double DM_Spectrum::get(const double E_gamma) const {
 
+	auto M2C_DM = (int) m_mass * cgs::GeV;
 	auto lgx = std::log10(E_gamma / M2C_DM);
 
 	if (lgx <= -8. || lgx >= 1.) {
