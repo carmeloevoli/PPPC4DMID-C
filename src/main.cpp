@@ -25,7 +25,7 @@ int main() { 	// CGS UNITS
 
 	double emissivity = 0;
 	{
-		double sigma_v = 3e26 * cgs::cm3 / cgs::sec;
+		double sigma_v = 3e-26 * cgs::cm3 / cgs::sec;
 		double E_gamma = 10. * cgs::GeV;
 		double position = 8.1 * cgs::kpc;
 
